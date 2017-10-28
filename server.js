@@ -1,5 +1,6 @@
 // Dependencies
 var express = require('express');
+var bodyParser = require("body-parser");
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -53,10 +54,8 @@ app.get("/api/:list", function(req, res) {
 
     if (chosen === "reservation") {
         res.json(reservation);
-
-    else {
+    } else {
     	res.json(waitlist);
-        }
     };
 }); 
 

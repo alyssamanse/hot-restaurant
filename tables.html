@@ -18,38 +18,75 @@
 			</p>
 		</div>
 
-		<div class="card">
-			<div class="card-header">Current Reservations</div>
-			<ul class="list-group list-group-flush" id="tableList">
-
-			</ul>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Current Reservations</h3>
+			</div>
+			<div class="panel-body" id="reservationList">
+				
+			</div>
 		</div>
 
-<<<<<<< HEAD
-		<div class="card">
-			<div class="card-header">Wait List</div>
-			<ul class="list-group list-group-flush" id="tableList">
-
-			</ul>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Wait List</h3>
+			</div>
+			<div class="panel-body" id="waitList">
+				<div>Test Content</div>
+			</div>
 		</div>
 
-		<div><a href="#">API Table Link</a> | <a href="#">API Wait List</a></div>
-=======
 		<div><a href='#' id="clearTable">Clear Table</a> | <a href="#">API Table Link</a> | <a href="#">API Wait List</a></div>
->>>>>>> f762f465e2f6756005b34d353c3b03432a0762e4
 	</div>
 
 <script type="text/javascript">
 
-	var currentURL = 'localhost:8080';
+	var currentURL = 'localhost:3000';
 
-	
+	function displayReservations() {
+		$.ajax({url: currentURL + "api/reservation", method: "GET"})
+		.done(function(data) {
+			console.log(data);
+
+			var tableNumber = 0;
+
+			for (var i = 0; i < data.length; i++) {
+				tableNumber++;
+
+				var reservationBlock = $("<div>");
+				var reservationInfo = $("<h1>" + tableNumber + " | " + data[i].newId + "</h1>");
+				reservationInfo.append(reservationBlock);
+				$("#reservationList").append(reservationBlock);
+			}
+		})
+	}
+
+	function displayWaitList() {
+		$.ajax({url: currentURL + "api/waitlist", method: "GET"})
+		.done(function(data) {
+			console.log(data);
+
+			var tableNumber = 0;
+
+			for (var i = 0; i < data.length; i++) {
+				tableNumber++;
+
+				var reservationBlock = $("<div>");
+				var reservationInfo = $("<h1>" + tableNumber + " | " + data[i].newId + "</h1>");
+				reservationInfo.append(reservationBlock);
+				$("#waitList").append(reservationBlock);
+			}
+		})
+	}
+
 	function clearTable(){
-
+		$.ajax({url: currentURL + "/api/clear", method: "POST"})
 	};
+
 	$('#clearTable').on('click', function (){
 		clearTable();
 	});
+
 </script>
 
 </body>
