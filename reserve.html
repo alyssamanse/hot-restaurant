@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-group">
 					<label for="name">Phone Number</label>
-					<input type="text" class="form-control" id="phoneNumber">
+					<input type="number" class="form-control" id="phoneNumber">
 				</div>
 				<div class="form-group">
 					<label for="name">Email</label>
@@ -40,7 +40,7 @@
 					<label for="name">Unique ID</label>
 					<input type="text" class="form-control" id="id">
 				</div>
-				<input class="btn btn-primary" type="submit" value="Submit">
+				<input class="btn btn-primary" type="submit" value="Submit" id="submitButton">
 			</form>
 		</div>
 	</div>
@@ -56,6 +56,29 @@
 </div>
 
 </div>
+
+<script type="text/javascript">
+
+
+	$('#submitButton').on('click', function(event){
+		event.preventDefault();
+		var newReservation = {
+			newName: $('#name').val().trim(),
+			newNumber: $('#phoneNumber').val().trim(),
+			newEmail: $('#email').val().trim(),
+			newId: $('#id').val().trim()
+		}	
+
+			$.post('api(change)', newReservation)
+				.done(function(data) {
+					console.log(data);
+					alert('Adding Your Reservation');
+				});
+
+	});
+
+
+</script>
 
 </body>
 </html>
