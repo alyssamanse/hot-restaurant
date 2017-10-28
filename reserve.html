@@ -18,11 +18,11 @@
       <a href="../hot-restaurant/index.html"><button type="button" class="btn btn-light btn-lg"><span class="glyphicon glyphicon-home"></span></button></a>
     </div>
 
-	<div class="card">
-		<div class="card-title">
-			Table Reservation
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Table Reservation</h3>
 		</div>
-		<div class="card-body">
+		<div class="panel-body">
 			<form>
 				<div class="form-group">
 					<label for="name">Name</label>
@@ -69,7 +69,7 @@
 			newId: $('#id').val().trim()
 		}
 
-			$.post('api/new', newReservation)
+			$.post('/api/new', newReservation)
 				.done(function(data) {
 					console.log(data);
 
