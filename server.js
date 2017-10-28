@@ -62,5 +62,13 @@ app.get("/api/:list", function(req, res) {
 
    } else {
     	res.json(waitlist);
-        }
-    });
+    }
+});
+app.post("/api/clear", function(req, res){
+	while(waitlist.length>0){
+		waitlist.pop();
+	}
+	while(reservation.length>0){
+		reservation.pop();
+	}
+})
