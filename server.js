@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
+var bodyParser = require('body-parser');
 var PORT = process.env.PORT || 3000;
 
 // Arrays
@@ -57,10 +58,18 @@ app.get("/api/:list", function(req, res) {
 
     if (chosen === "reservation") {
         res.json(reservation);
+
+
+   } else {
+    	res.json(waitlist);
+        }
+    });
+
     } else {
     	res.json(waitlist);
     };
 }); 
+
 
 var express = require('express');
 
