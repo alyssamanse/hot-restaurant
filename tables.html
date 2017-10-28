@@ -41,7 +41,7 @@
 
 <script type="text/javascript">
 
-	var currentURL = 'localhost:3000';
+	var currentURL = window.location.origin;
 
 	function displayReservations() {
 		$.ajax({url: currentURL + "/api/reservation", method: "GET"})
