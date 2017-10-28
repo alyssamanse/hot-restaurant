@@ -1,9 +1,9 @@
 // Dependencies
 var express = require('express');
-var bodyParser = require("body-parser");
-var app = express();
 var bodyParser = require('body-parser');
+var app = express();
 var PORT = process.env.PORT || 3000;
+var path = require('path')
 
 // Arrays
 var reservation = [];
@@ -39,7 +39,7 @@ app.get("/tables", function(req, res) {
 app.post("/api/new", function(req, res) {
 
     var newReservation = req.body;
-    newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
+   // newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newReservation);
 
@@ -64,23 +64,3 @@ app.get("/api/:list", function(req, res) {
     	res.json(waitlist);
         }
     });
-
-    } else {
-    	res.json(waitlist);
-    };
-}); 
-
-
-var express = require('express');
-
-var app = express();
-
-var PORT = process.env.PORT || 3000;
-
-app.get("/", function(req, res) {
-  res.send("Huzzah!");
-});
-
-app.listen(PORT, function() {
-	console.log("App is listening on PORT " + PORT);
-});
