@@ -46,7 +46,7 @@
 	function displayReservations() {
 		$.ajax({url: currentURL + "/api/reservation", method: "GET"})
 		.done(function(reservationData) {
-			console.log(reservationData);
+			console.log("Res Data: " + reservationData);
 
 			var tableNumber = 0;
 
@@ -55,7 +55,7 @@
 
 				var reservationBlock = $("<div>");
 				var reservationInfo = $("<h1>" + tableNumber + " | " + reservationData[i].newId + "</h1>");
-				reservationInfo.append(reservationBlock);
+				reservationBlock.append(reservationInfo);
 				$("#reservationList").append(reservationBlock);
 			}
 		})
@@ -74,7 +74,7 @@
 
 				var waitListBlock = $("<div>");
 				var waitListInfo = $("<h1>" + waitListNumber + " | " + waitListData[i].newId + "</h1>");
-				waitListInfo.append(waitListBlock);
+				waitListBlock.append(waitListInfo);
 				$("#waitList").append(waitListBlock);
 			}
 		})
