@@ -32,7 +32,6 @@
 				<h3 class="panel-title">Wait List</h3>
 			</div>
 			<div class="panel-body" id="waitList">
-				<div>Test Content</div>
 			</div>
 		</div>
 
@@ -85,6 +84,8 @@
 	};
 
 	$('#clearTable').on('click', function (){
+		$("#reservationList").empty();
+		$("#waitList").empty();
 		clearTable();
 	});
 
