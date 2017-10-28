@@ -35,14 +35,17 @@ app.get("/tables", function(req, res) {
 
 // Adding to Reservation/Waitlist
 app.post("/api/new", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body-parser middleware
+
     var newReservation = req.body;
     newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newReservation);
 
-    characters.push(newReservation);
+    if (reservation.length < 5) {
+    	reservation.push(newReservation);
+    } else {
+    	waitlist.push(newReservation);
+    };    
 
     res.json(newReservation);
 });
